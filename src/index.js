@@ -37,7 +37,7 @@ var cusContentEditable = false
 if (program.contentEditable === 'true') {
     cusContentEditable = true
 }
-
+// 默认证书位置 \Users\用户名\node-mitmproxy
 weinreDelegate.createCA()
 
 let tempServer = new http.Server()

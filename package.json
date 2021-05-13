@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha -R landing test/index --exit",
     "build": "babel -w src -d lib",
-    "dev": "node --inspect src/index.js",
+    "dev": "node --trace-deprecation --inspect src/index.js",
     "prepublish": "babel src -d lib"
   },
   "bin": {

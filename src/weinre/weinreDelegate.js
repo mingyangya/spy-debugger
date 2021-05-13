@@ -30,6 +30,15 @@ var autoDetectBrowser = true;
 var externalProxy;
 var cache = false;
 
+/**
+ * @params {Number}  cusSpyProxyPort 代理端口
+ * @params {Boolean} cusShowIframe spy iframe window
+ * @params {Boolean} cusAutoDetectBrowser 自动打开浏览器
+ * @params {Number}  cusExternalProxy 
+ * @params {Number}  cusCache set no cache
+ * @params {Boolean}  cusContentEditable 可编辑
+ */
+
 weinreDelegate.run = function run({
     cusSpyProxyPort,
     cusShowIframe,
@@ -47,6 +56,7 @@ weinreDelegate.run = function run({
     let unBoundedPort;
     // get an unbounded port
     let tempServer  = new http.Server();
+    // let tempServer  = http.createServer();
     tempServer.listen(() => {
         unBoundedPort = tempServer.address().port;
         tempServer.close(() => {
@@ -71,10 +81,12 @@ function startWeinreServer (port) {
             readTimeout: 5,
             deathTimeout: 15
         });
+
         weinreServer.on('listening', () => {
 
             fs.readFile(path.resolve(__dirname, '../../template/inject.js.template.html'), 'utf8', function (err,tpl) {
                 if (err) {
+                    console.log('readFile', err)
                     return console.log(err);
                 }
                 var injectScriptTag = htmlUtil.createScriptTag({
@@ -121,6 +133,7 @@ function startWeinreServer (port) {
                             })
 
                         } else {
+                            console.log('AUTO')
                             // auto open debugger page
                             if (process.platform === 'win32' || process.platform === 'win64') {
                                 child_process.exec(`start http://127.0.0.1:${port}/client`);
