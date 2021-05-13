@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha -R landing test/index --exit",
     "build": "babel -w src -d lib",
-    "dev": "node-debug dev/testSpyProxy.js",
+    "dev": "node --inspect src/index.js",
     "prepublish": "babel src -d lib"
   },
   "bin": {
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wuchangming/spy-debugger.git"
+    "url": "git+https://github.com/mingyangya/spy-debugger.git"
   },
   "keywords": [
     "spy",
@@ -22,12 +22,12 @@
     "weinre",
     "https"
   ],
-  "author": "wuchangming",
+  "author": "mingyangya",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wuchangming/spy-debugger/issues"
+    "url": "https://github.com/mingyangya/spy-debugger/issues"
   },
-  "homepage": "https://github.com/wuchangming/spy-debugger#readme",
+  "homepage": "https://github.com/mingyangya/spy-debugger#readme",
   "dependencies": {
     "anyproxy": "4.1.0",
     "babel-plugin-transform-async-to-generator": "^6.8.0",
